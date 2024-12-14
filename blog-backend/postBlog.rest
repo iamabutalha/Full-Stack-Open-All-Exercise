@@ -1,0 +1,24 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Seriously Programming reviews are good but boring",
+    "author": "Ali",
+    "url": "bing.con",
+    "likes": 14,
+    "userId" : "6724604363af506250b82585"
+}
+###
+PUT http://localhost:3003/api/blogs/5a422a851b54a676234d17f7
+Content-Type: application/json
+
+{
+    "title": "Seriously Programming reviews are good but boring",
+    "author": "Ali",
+    "url": "bing.con",
+    "likes": 3,
+    "userId": "67245e6c6ad26ae42a3101c0"
+    
+}
+###
+DELETE http://localhost:3003/api/blogs/5a422aa71b54a676234d17f8

@@ -1,0 +1,19 @@
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "@1111",
+    "name":"ll111",
+    "password": "ll11",
+    "userId": "67245e6c6ad26ae42a3101c0"
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "water",
+    "name":"water",
+    "password": "water"
+}

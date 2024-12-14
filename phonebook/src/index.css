@@ -1,0 +1,16 @@
+.submit {
+    background: rgb(201, 200, 200);
+    padding: 5px;
+    border: solid green;
+    color: green;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.error {
+    background: rgb(201, 200, 200);
+    padding: 5px;
+    border: solid red;
+    color: red;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

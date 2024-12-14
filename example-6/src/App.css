@@ -1,0 +1,80 @@
+body {
+  font-family: Arial;
+}
+div {
+  margin-left: 400px;
+  width: 450px;
+  height: 300px;
+  
+  border-radius: 5px;
+  box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.44);
+}
+h2 {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 50px;
+}
+.timer {
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  
+}
+.minutes {
+  margin-left: 50px;
+  color: gray;
+  display: inline-block;
+}
+.start-button {
+  margin-left: 140px;
+  background-color: green;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.start-button:hover {
+  background-color: rgb(95, 156, 2);
+}
+.stop-button {
+  background-color: red;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 2px;
+  font-weight: bold ;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.stop-button:hover {
+  background-color: brown;
+}
+.reset-button {
+  background-color: black;
+  margin-left: 0px;
+  color: white;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold ;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+}
+
+.reset-button:hover {
+  background-color: rgb(75, 75, 75);
+}
