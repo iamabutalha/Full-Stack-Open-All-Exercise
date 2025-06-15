@@ -18,6 +18,11 @@ blogRouter.get("/", async (request, response) => {
   let blogs = await Blog.find({}).populate("user");
   response.json(blogs);
 });
+blogRouter.get("/:id", async (request, response) => {
+  let id = request.params.id;
+  let blog = await Blog.findById(id);
+  response.json(blog);
+});
 
 blogRouter.post("/", async (request, response) => {
   const body = request.body;

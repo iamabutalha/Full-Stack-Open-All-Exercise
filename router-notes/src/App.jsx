@@ -1,5 +1,20 @@
 import ReactDOM from "react-dom/client";
 import { useState } from "react";
+import { Table, Form, Navbar, Nav } from "react-bootstrap";
+import {
+  Container,
+  Paper,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  TextField,
+  Alert,
+  AppBar,
+  Toolbar,
+  IconButton,
+} from "@mui/material";
+import styled from "styled-components";
 
 import {
   BrowserRouter as Router,
@@ -11,6 +26,34 @@ import {
   useNavigate,
   useMatch,
 } from "react-router-dom";
+
+const Button = styled.button`
+  background: Bisque;
+  font-size: 1em;
+  margin: 1em;
+  padding 0.25em 1em;
+  border: 2px solid Chocolate;
+  border-radius: 3px;`;
+
+const Input = styled.input`
+  margin: 0.25em;
+`;
+
+const Page = styled.div`
+  padding: 1em;
+  background: papayawhip;
+`;
+
+const Navigation = styled.div`
+  background: BurlyWood;
+  padding: 1em;
+`;
+
+const Footer = styled.div`
+  background: Chocolate;
+  padding: 1em;
+  margin-top: 1em;
+`;
 
 const Home = () => (
   <div>
@@ -46,13 +89,20 @@ const Note = ({ notes }) => {
 const Notes = ({ notes }) => (
   <div>
     <h2>Notes</h2>
-    <ul>
-      {notes.map((note) => (
-        <li key={note.id}>
-          <Link to={`/notes/${note.id}`}>{note.content}</Link>
-        </li>
-      ))}
-    </ul>
+    <TableContainer component={Paper}>
+      <Table>
+        <TableBody>
+          {notes.map((note) => (
+            <TableRow key={note.id}>
+              <TableCell>
+                <Link to={`/notes/${note.id}`}>{note.content}</Link>
+              </TableCell>
+              <TableCell>{note.user}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   </div>
 );
 
@@ -75,17 +125,23 @@ const Login = (props) => {
     props.onLogin("mluukkai");
     navigate("/");
   };
+
   return (
     <div>
       <h2>login</h2>
       <form onSubmit={onSubmit}>
         <div>
-          username: <input />
+          username :
+          <Input />
         </div>
         <div>
-          password: <input type="password" />
+          <Input type="password" />
         </div>
-        <button type="submit">login</button>
+        <div>
+          <Button primary="" type="submit">
+            login
+          </Button>
+        </div>
       </form>
     </div>
   );
@@ -114,6 +170,7 @@ const App = () => {
   ]);
 
   const [user, setUser] = useState(null);
+  const [message, setMessage] = useState(null);
   const match = useMatch("/notes/:id");
   const note = match
     ? notes.find((note) => note.id === Number(match.params.id))
@@ -121,6 +178,10 @@ const App = () => {
 
   const login = (user) => {
     setUser(user);
+    setMessage(`Welcome ${user}`);
+    setTimeout(() => {
+      setMessage(null);
+    }, 3000);
   };
 
   console.log(user);
@@ -129,8 +190,10 @@ const App = () => {
     padding: 5,
   };
   return (
-    <div>
-      <div>
+    <Page>
+      {message && <Alert severity="success">{message}</Alert>}
+
+      <Navigation>
         <Link style={padding} to="/">
           home
         </Link>
@@ -143,9 +206,11 @@ const App = () => {
         {user ? (
           <em>{user} logged in</em>
         ) : (
-          <Link style={padding} to="/login"></Link>
+          <Link style={padding} to="/login">
+            login
+          </Link>
         )}
-      </div>
+      </Navigation>
 
       <Routes>
         <Route path="/notes/:id" element={<Note notes={notes} />} />
@@ -158,11 +223,11 @@ const App = () => {
         <Route path="/" element={<Home />} />
       </Routes>
 
-      <div>
-        <br />
-        <em>Note app, Department of Computer Science 2023</em>
-      </div>
-    </div>
+      <Footer>
+        {" "}
+        <em>Note app, Department of Computer Science 2022</em>
+      </Footer>
+    </Page>
   );
 };
 

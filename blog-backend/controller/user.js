@@ -37,4 +37,18 @@ userRouter.get("/", async (request, response) => {
   response.json(users);
 });
 
+userRouter.get("/:id", async (request, response) => {
+  let userId = request.params.id;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return response.status(404).json({ error: "User not found" });
+    }
+    return response.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching user:", error.message);
+    return response.status(500).json({ error: "Internal server error" });
+  }
+});
+
 export default userRouter;

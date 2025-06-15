@@ -17,3 +17,6 @@ Content-Type: application/json
     "name":"water",
     "password": "water"
 }
+
+###
+GET http://localhost:3003/api/users/67245e6c6ad26ae42a3101c0
